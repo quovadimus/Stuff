@@ -6,7 +6,8 @@ chrome=$(osascript -e 'tell app "System Events" to count processes whose name is
 firefox=$(osascript -e 'tell app "System Events" to count processes whose name is "Firefox"')
 opera=$(osascript -e 'tell app "System Events" to count processes whose name is "Opera"')
 
-	
+mkdir -p /private/tmp/browsers
+
 if [[ "$safari" != 0 ]] ; 
 	then
  		touch /private/tmp/browsers/safari
