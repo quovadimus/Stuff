@@ -1,0 +1,16 @@
+       
+            
+keytool -genkey -alias tomcat -keyalg RSA -keysize 2048 -keypass "password" -storepass "password" -keystore /Library/JSS/Tomcat/keystore3.jks -ext san=dns:jssadmin.jennifer.com,ip:192.168.1.
+
+
+keytool -certreq -keyalg RSA -alias tomcat -file /Library/JSS/Tomcat/certreq3.csr -keystore /Library/JSS/Tomcat/keystore3.jks -ext san=dns:jssadmin.jennifer.com,ip:192.168.1.98
+
+keytool -import -alias root -keystore /Library/JSS/Tomcat/keystore3.jks -trustcacerts -file ~/Downloads/CN\=CCE\ JSS\ Built-in\ Certificate\ Authority.pem
+
+keytool -import -alias tomcat -keystore /Library/JSS/Tomcat/keystore3.jks -trustcacerts -file ~/Downloads/
+
+<Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+           maxThreads="150" scheme="https" secure="true"
+           clientAuth="false" sslProtocol="TLS"
+           keystoreFile="/Library/JSS/Tomcat/keystore3.jks"
+           keystorePass="password" />
