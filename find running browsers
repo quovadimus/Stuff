@@ -1,5 +1,13 @@
 #!/bin/bash
-set -x
+# set -x #uncomment for troubleshooting
+# Title:  Find Running Browsers 
+# Author: Jennifer Unger
+# Date:   June 26, 2015
+#
+# Purpose:  Find running browsers, make a quick reciept to note the ones that were running and then quit.
+# Designed to be used as a 'before' policy script in a JSS Policy.  User notification before policy would warn that any found applications would be quit.
+# After the script, the action would be done, likely installing an update to the app or to a plugin (flash/java).
+# there is a companion script that reads the reciept files and reopened the necessary applications.
 
 safari=$(osascript -e 'tell app "System Events" to count processes whose name is "Safari"')
 chrome=$(osascript -e 'tell app "System Events" to count processes whose name is "Google Chrome"')
